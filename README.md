@@ -6,6 +6,8 @@
 ### **Running the created Docker**
 <code>docker run -p 8080:8080 -p 50000:50000 -v /home/\${USER}/\${CHOSEN_FOLDER}:/var/jenkins_home framaxwlad/jenkins_bazel</code>
 
+Use the flag <code>-d --restart unless-stopped</code> after <code>run</code> to restart the docker everytime until stopped manually.
+
 ---
 
 _Jenkins validated with:_
