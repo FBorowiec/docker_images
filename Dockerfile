@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt -y update && apt-get install -y gnupg2
 RUN apt -y install curl wget g++ systemctl git
 
@@ -17,5 +19,5 @@ RUN apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 8080
 
-ENTRYPOINT ["top", "-b"]
-CMD ["systemctl start jenkins"]
+ENTRYPOINT ["/bin/systemctl", "start", "jenkins"]
+CMD ["bash"]
