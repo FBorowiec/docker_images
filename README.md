@@ -10,7 +10,7 @@ Use the flag <code>-d --restart unless-stopped</code> after <code>run</code> to 
 
 ---
 
-_Jenkins validated with:_
+_Dockerfile validated with:_
 
 <url>https://www.fromlatest.io/#/</url>
 
