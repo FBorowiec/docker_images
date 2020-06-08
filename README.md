@@ -4,9 +4,11 @@
 <code>docker build -f Dockerfile -t framaxwlad/jenkins_bazel .</code>
 
 ### **Running the created Docker**
-<code>docker run -p 8080:8080 -p 50000:50000 framaxwlad/jenkins_bazel</code>
+<code>docker container run -p 8080:8080 -p 50000:50000 framaxwlad/jenkins_bazel</code>
 
 Use the flag <code>-d --restart unless-stopped</code> after <code>run</code> to restart the docker everytime until stopped manually.
+
+<code>docker container run -d --rm --name jenkins_test -p 8080:8080 -p 5000:5000 -v /home/fra/jenkins_docker:/var/lib/jenkins framaxwlad/jenkins_bazel</code>
 
 ---
 

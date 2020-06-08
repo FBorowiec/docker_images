@@ -18,6 +18,8 @@ RUN wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key a
     && echo "deb https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list \
     && apt -y update && apt -y install --no-install-recommends jenkins
 
+VOLUME /var/jenkins_home
+
 # Clearing cache to keep image small
 RUN apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -25,4 +27,4 @@ RUN apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 8080
 
 ENTRYPOINT ["/bin/systemctl", "start", "jenkins"]
-CMD ["bash"]
+CMD ["/bin/bash"]
