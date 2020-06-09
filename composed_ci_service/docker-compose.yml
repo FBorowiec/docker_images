@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  ubuntu_bazel:
+    image: framaxwlad/ubuntu_bazel
+  jenkins:
+    image: jenkins/jenkins
+    volumes:
+      - jenkins_docker:/var/jenkins_home
+    ports:
+      - '8080:8080'
+      - '5000:5000'
+    depends_on:
+      - ubuntu_bazel
+
+volumes:
+  jenkins_docker:
+      external:
+          name: jenkins_docker

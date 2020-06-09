@@ -14,17 +14,16 @@ RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - \
     && echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list \
     && apt -y update && apt -y install --no-install-recommends bazel \
     && apt -y install --no-install-recommends openjdk-11-jdk openjdk-8-jdk \
-    && echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"' >> .bashrc
+    && echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"' >> .bashrc \
+    && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Installing Jenkins
 RUN wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add - \
     && echo "deb https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list \
-    && apt -y update && apt -y install --no-install-recommends jenkins
+    && apt -y update && apt -y install --no-install-recommends jenkins \
+    && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-VOLUME /var/jenkins_home
-
-# Clearing cache to keep image small
-RUN apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# VOLUME /var/lib/jenkins
 
 # Exposing port 8080 on host for Jenkins
 EXPOSE 8080
