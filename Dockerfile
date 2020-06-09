@@ -1,4 +1,7 @@
-FROM ubuntu:latest
+FROM ubuntu:focal
+
+LABEL name=jenkins_bazel
+LABEL version=1.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 

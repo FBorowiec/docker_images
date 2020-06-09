@@ -1,14 +1,21 @@
 # Docker Images
 
 ### **Building a Dockerfile and giving it a name**
-<code>docker build -f Dockerfile -t framaxwlad/jenkins_bazel .</code>
+```
+docker build -f Dockerfile -t framaxwlad/jenkins_bazel .
+```
 
 ### **Running the created Docker**
-<code>docker container run -p 8080:8080 -p 50000:50000 framaxwlad/jenkins_bazel</code>
 
-Use the flag <code>-d --restart unless-stopped</code> after <code>run</code> to restart the docker everytime until stopped manually.
+* Use the flag <code>--restart unless-stopped </code> to restart the docker everytime until stopped manually.
+* Use the flag <code>--rm </code> to remove the container after stopping
 
-<code>docker container run -d --rm --name jenkins_test -p 8080:8080 -p 5000:5000 -v /home/fra/jenkins_docker:/var/lib/jenkins framaxwlad/jenkins_bazel</code>
+Prior to executing the container:
+```
+sudo chmod 747 /home/${HOME}/jenkins_docker
+
+docker container run -d --restart unless-stopped --name jenkins_ci -p 8080:8080 -p 5000:5000 -v /home/${HOME}/jenkins_docker:/var/lib/jenkins framaxwlad/jenkins_bazel
+```
 
 ---
 
