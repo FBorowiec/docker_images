@@ -7,7 +7,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt -y update \
     && apt -y install --no-install-recommends gnupg2 \
-    && apt -y install --no-install-recommends curl wget g++ systemctl git ca-certificates bash
+    && apt -y install --no-install-recommends curl wget g++ systemctl git ca-certificates bash \
+    && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Installing Bazel with the Java sdk version 8
 RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - \
@@ -23,7 +24,7 @@ RUN wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key a
     && apt -y update && apt -y install --no-install-recommends jenkins \
     && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# VOLUME /var/lib/jenkins
+VOLUME /var/lib/jenkins
 
 # Exposing port 8080 on host for Jenkins
 EXPOSE 8080
