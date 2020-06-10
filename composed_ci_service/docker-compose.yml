@@ -10,10 +10,14 @@ services:
     ports:
       - '8080:8080'
       - '5000:5000'
+    networks:
+      - net
     depends_on:
       - ubuntu_bazel
 
 volumes:
   jenkins_docker:
-      external:
-          name: jenkins_docker
+    external:
+      name: jenkins_docker
+networks:
+  net:
