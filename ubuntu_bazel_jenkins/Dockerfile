@@ -24,6 +24,8 @@ RUN wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key a
     && apt -y update && apt -y install --no-install-recommends jenkins \
     && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt purge -y curl wget && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 VOLUME /var/lib/jenkins
 
 # Exposing port 8080 on host for Jenkins

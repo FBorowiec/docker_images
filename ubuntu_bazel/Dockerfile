@@ -18,4 +18,6 @@ RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - \
     && echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"' >> .bashrc \
     && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt purge -y curl && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 CMD ["/bin/bash"]

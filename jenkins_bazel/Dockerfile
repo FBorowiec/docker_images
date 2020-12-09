@@ -21,6 +21,8 @@ RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - \
 RUN echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"' >> .bashrc \
     && chown -R jenkins:jenkins /var/lib/jenkins
 
+RUN apt purge -y curl && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 USER jenkins
 
 CMD ["/bin/bash"]

@@ -3,10 +3,12 @@ version: '3.7'
 services:
   ubuntu_bazel:
     image: framaxwlad/ubuntu_bazel
+    networks:
+      - net
   jenkins:
     image: jenkins/jenkins
     volumes:
-      - jenkins_docker:/var/jenkins_home
+      - ~/jenkins_docker:/var/jenkins_home
     ports:
       - '8080:8080'
       - '5000:5000'
