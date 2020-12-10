@@ -1,8 +1,21 @@
 # **Dockerfile**
 
+This is where I keep the Dockerfiles to my Docker image. You can find my Docker images on my dockerhub account: [hub.docker.com/u/framaxwlad](https://hub.docker.com/u/framaxwlad)
+
+My software development image with Ubuntu and Bazel:
+[framaxwlad/ubuntu_dev](https://hub.docker.com/repository/docker/framaxwlad/ubuntu_dev)
+
+`docker pull framaxwlad/ubuntu_dev:latest`
+
+My Docker image with Ubuntu, Bazel and Jenkins:
+[framaxwlad/jenkins_bazel](https://hub.docker.com/repository/docker/framaxwlad/jenkins_bazel)
+
+`docker pull framaxwlad/jenkins_bazel:latest`
+
 ## **Building a Dockerfile**
 
-`-t` tags the image to the given name. This image contains the *Bazel* build system as well as *Jenkins* as to experiment with *Jenkins* functionalities with projects that can be build with *Bazel*.
+This image contains the *Bazel* build system as well as *Jenkins* as to experiment with *Jenkins* functionalities with projects that can be build with *Bazel*.
+`-t` tags the image to the given name.
 
 ```bash
 docker build -f Dockerfile -t framaxwlad/jenkins_bazel .
