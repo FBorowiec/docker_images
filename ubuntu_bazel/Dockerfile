@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt -y update \
     && apt -y install --no-install-recommends gnupg2 \
-    && apt -y install --no-install-recommends curl wget g++ systemctl git ca-certificates bash zsh \
+    && apt -y install --no-install-recommends curl wget g++ systemctl git ca-certificates bash zsh python3 python3-distutils python3-apt \
     && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Installing Bazel with the Java sdk version 8
@@ -33,6 +33,8 @@ RUN git config --global user.email "franek.borowiec@gmail.com" \
 
 RUN apt purge -y curl && apt clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /root
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+WORKDIR /home
 
 CMD ["zsh"]
